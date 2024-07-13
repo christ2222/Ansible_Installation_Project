@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ansible Configuration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #b4ae5e;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+        }
+        .content {
+            max-width: 800px;
+            margin: 20px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+        }
+        .typed {
+            display: inline-block;
+        }
+        @keyframes rumble {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }
+        .rumble {
+            display: inline-block;
+            animation: rumble 0.2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://www.cloudjournee.com/wp-content/uploads/2018/07/Ansible_logo-e1530964847578.png" alt="Ansible Logo" class="logo">
+    <div class="content">
+        <p>This web server was configured using Ansible, an open-source configuration management tool that automates, configures, and orchestrates your infrastructure. For configuration management, it uses a playbook, which is a YAML file containing the configuration details.</p>
+        <p>Compared to CloudFormation, which provisions infrastructure, Ansible manages the configuration of your infrastructure.</p>
+    </div>
+    <script>
+        const typedText = document.querySelector('.typed');
+        const textContent = typedText.getAttribute('data-typed-items');
+        
+        function rumbleEffect() {
+            typedText.classList.add('rumble');
+            setTimeout(() => {
+                typedText.classList.remove('rumble');
+                setTimeout(rumbleEffect, 1000);
+            }, 200);
+        }
+
+        document.addEventListener('DOMContentLoaded', rumbleEffect);
+    </script>
+</body>
+</html>

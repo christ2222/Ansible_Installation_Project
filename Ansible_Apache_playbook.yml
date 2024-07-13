@@ -1,0 +1,61 @@
+---
+# Play_1
+- name: Deploy Apache to Ubuntu Webserver                                                  
+  hosts: Ubuntu_hosts
+  remote_user: root
+  become: true  # Ensure tasks run with root privileges
+  vars_files:
+    - variables.yml
+   
+  tasks:
+    - name: Update all packages to their latest version
+      ansible.builtin.apt:
+        name: '*'
+        state: latest
+
+    - name: Install Apache HTTP Server
+      ansible.builtin.apt:
+        name: "{{ package }}"
+        state: present
+
+    - name: Start Apache service if not started
+      ansible.builtin.service:
+        name: "{{ package }}"
+        state: started  
+
+    - name: Enable Apache to start on boot
+      ansible.builtin.service:
+        name: "{{ package }}"
+        enabled: yes
+
+    - name: Copy index file to the clients
+      ansible.builtin.copy:
+        src: index.html
+        dest: /var/www/html/
+
+# Play_2  
+- name: Install Git on all Ubuntu webservers                                            
+  hosts: Ubuntu_hosts
+  remote_user: root
+  become: true  # Ensure tasks run with root privileges
+  tasks:
+    - name: Install Git
+      ansible.builtin.apt:
+        name: git
+        state: present
+        
+
+# Play_3 
+- name: Display my name on all hosts                                  
+  hosts: all
+  remote_user: root
+  become: true  # Ensure tasks run with root privileges
+  vars:
+    name: Christian Logotse
+  tasks:
+    - name: Print user name on each server
+      ansible.builtin.debug:
+        msg:
+          - "{{ name }}"
+          - "Nothing is impossible!"
+          - "Trust the process!"
