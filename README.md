@@ -80,7 +80,7 @@ ansible --version
 Generate an SSH key pair on the controller:
 
 ```bash
-ssh-keygen -t rsa -b 2048
+ssh-keygen -t rsa
 ```
 
 Copy the public key to each client node. Replace `client_user` and `client_ip` with the appropriate username and IP address of each client:
